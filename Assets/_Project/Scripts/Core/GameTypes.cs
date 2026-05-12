@@ -30,6 +30,28 @@ namespace ChromaLogic.Core
     }
 
     /// <summary>
+    /// Progression rank awarded to the Curator as Logic Points accumulate.
+    /// Values are ordered lowest to highest — ordinal comparisons are valid.
+    /// In UI strings always pair the tier name with "Curator" (e.g. "Scholar Curator"),
+    /// never display the word "rank" alone.
+    /// </summary>
+    public enum CuratorRank
+    {
+        /// <summary>Starting rank. 0 Logic Points required.</summary>
+        Neophyte,
+        /// <summary>1 000 Logic Points required.</summary>
+        Scholar,
+        /// <summary>5 000 Logic Points required.</summary>
+        Architect,
+        /// <summary>15 000 Logic Points required.</summary>
+        Master,
+        /// <summary>40 000 Logic Points required.</summary>
+        Grandmaster,
+        /// <summary>100 000 Logic Points required.</summary>
+        ArchCuratorOfTheVoid
+    }
+
+    /// <summary>
     /// The result returned by <see cref="SudokuSolver.GetHint"/>.
     /// Contains the grid coordinates and both correct axis values for one unfilled cell.
     /// This powers The Insight mechanic.
