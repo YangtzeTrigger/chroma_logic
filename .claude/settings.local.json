@@ -8,7 +8,14 @@
       "WebFetch(domain:docs.unity3d.com)",
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "PowerShell(Write-Host \"=== All items in scipts \\(no recurse\\) ===\" ; Get-ChildItem -Path \"C:\\\\Users\\\\jason\\\\Chroma-Logic\\\\Assets\\\\_Project\\\\scipts\" -Force | ForEach-Object { [PSCustomObject]@{Name=$_.Name; Type=$_.GetType\\(\\).Name; IsDirectory=$_.PSIsContainer} })",
+      "PowerShell(Test-Path \"C:\\\\Users\\\\jason\\\\Chroma-Logic\\\\Assets\\\\_Project\\\\scipts\" ; $items = @\\(Get-ChildItem -Path \"C:\\\\Users\\\\jason\\\\Chroma-Logic\\\\Assets\\\\_Project\\\\scipts\" -Force\\) ; Write-Host \"Count: $\\($items.Count\\)\" ; $items)",
+      "PowerShell(Join-Path *)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\jason\\\\Chroma-Logic\\\\Assets\\\\_Project\" -Recurse -Depth 2)",
+      "Bash(Select-Object FullName, PSIsContainer)",
+      "Bash(Sort-Object FullName)",
+      "Bash(git rm *)"
     ]
   }
 }
