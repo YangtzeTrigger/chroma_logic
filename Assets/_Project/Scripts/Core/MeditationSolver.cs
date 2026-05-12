@@ -1,16 +1,16 @@
 using System;
 using System.Collections.Generic;
-using ChromaLogic.Managers;
 
 namespace ChromaLogic.Core
 {
     /// <summary>
     /// Pure C# 4×4 dual-axis Sudoku engine for the Daily Meditation mode (Phase 9).
     /// <para>
-    /// Operates on the Curator's four chosen <see cref="ShapeType"/> values and four
-    /// chosen <see cref="ColourType"/> values stored in <see cref="PlayerDataManager"/>.
-    /// Both sets are captured at <see cref="GeneratePuzzle"/> call time, so changes made
-    /// in Aesthetic Calibration (Phase 10) take effect on the next generated Vessel.
+    /// Accepts the Curator's four chosen <see cref="ShapeType"/> values and four chosen
+    /// <see cref="ColourType"/> values as parameters to <see cref="GeneratePuzzle"/>.
+    /// Pass <c>PlayerDataManager.MeditationShapes</c> and
+    /// <c>PlayerDataManager.MeditationColours</c> at the call site so Aesthetic Calibration
+    /// changes (Phase 10) take effect on the next generated Vessel.
     /// </para>
     /// <para>
     /// The grid is 4×4 with four 2×2 boxes. Each axis independently satisfies standard
@@ -39,7 +39,6 @@ namespace ChromaLogic.Core
         // ── State ──────────────────────────────────────────────────────────
         private readonly Random _rng;
 
-        // Captured from PlayerDataManager at GeneratePuzzle() call time.
         private ShapeType[]  _shapeValues  = Array.Empty<ShapeType>();
         private ColourType[] _colourValues = Array.Empty<ColourType>();
 
@@ -57,31 +56,41 @@ namespace ChromaLogic.Core
         public MeditationSolver() : this(Environment.TickCount) { }
 
         /// <summary>Creates a new <see cref="MeditationSolver"/> with a deterministic seed.</summary>
-        /// <param name="seed">RNG seed. Identical seeds with identical <see cref="PlayerDataManager"/>
-        /// configuration produce identical puzzles.</param>
+        /// <param name="seed">RNG seed. Identical seeds with identical shapes and colours produce
+        /// identical puzzles.</param>
         public MeditationSolver(int seed) => _rng = new Random(seed);
 
         // ── Public API ─────────────────────────────────────────────────────
 
         /// <summary>
-        /// Generates a new 4×4 Meditation Vessel. Reads the Curator's chosen shapes and
-        /// colours from <see cref="PlayerDataManager.MeditationShapes"/> and
-        /// <see cref="PlayerDataManager.MeditationColours"/> at call time.
+        /// Generates a new 4×4 Meditation Vessel using the supplied shapes and colours.
         /// The resulting puzzle has a unique solution and 6–8 pre-filled clue cells.
         /// </summary>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown if <see cref="PlayerDataManager.Instance"/> is not yet initialised, or if
-        /// puzzle generation fails after <c>MaxGenerationRetries</c> attempts.
+        /// <param name="shapes">
+        /// Exactly 4 <see cref="ShapeType"/> values. Pass
+        /// <c>PlayerDataManager.Instance.MeditationShapes</c> at the call site.
+        /// Must not be <c>null</c>.
+        /// </param>
+        /// <param name="colours">
+        /// Exactly 4 <see cref="ColourType"/> values. Pass
+        /// <c>PlayerDataManager.Instance.MeditationColours</c> at the call site.
+        /// Must not be <c>null</c>.
+        /// </param>
+        /// <exception cref="ArgumentException">
+        /// Thrown when either list is <c>null</c> or does not contain exactly 4 items.
         /// </exception>
-        public void GeneratePuzzle()
+        /// <exception cref="InvalidOperationException">
+        /// Thrown if puzzle generation fails after <c>MaxGenerationRetries</c> attempts.
+        /// </exception>
+        public void GeneratePuzzle(IReadOnlyList<ShapeType> shapes, IReadOnlyList<ColourType> colours)
         {
-            PlayerDataManager pdm = PlayerDataManager.Instance
-                ?? throw new InvalidOperationException(
-                    "PlayerDataManager.Instance is null. " +
-                    "Ensure PlayerDataManager is initialised before calling GeneratePuzzle.");
+            if (shapes == null || shapes.Count != 4)
+                throw new ArgumentException("shapes must contain exactly 4 ShapeType values.", nameof(shapes));
+            if (colours == null || colours.Count != 4)
+                throw new ArgumentException("colours must contain exactly 4 ColourType values.", nameof(colours));
 
-            _shapeValues  = pdm.MeditationShapes.ToArray();
-            _colourValues = pdm.MeditationColours.ToArray();
+            _shapeValues  = new ShapeType[4]  { shapes[0],  shapes[1],  shapes[2],  shapes[3]  };
+            _colourValues = new ColourType[4] { colours[0], colours[1], colours[2], colours[3] };
 
             int prefillCount = _rng.Next(PrefillMin, PrefillMax + 1);
 

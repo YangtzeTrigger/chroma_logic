@@ -176,14 +176,11 @@ namespace ChromaLogic.Core
                         IsLocked   = snapshot.IsPreFilled,
                         IsRevealed = false
                     };
-
-                    // Seed deduplication arrays from pre-filled state.
-                    // A structure that is already complete in the clue set
-                    // should not fire its event immediately on first placement.
-                    // (Extremely rare but handled for correctness.)
                 }
             }
 
+            // Guards against the edge case where pre-filled clues already complete a structure,
+            // preventing those completion events from re-firing on the first Curator placement.
             SeedCompletionState();
         }
 
@@ -395,13 +392,11 @@ namespace ChromaLogic.Core
             }
         }
 
-        // Returns true when every cell in the grid is filled.
-        // Called only from CheckCompletions; the write path guarantees correctness.
+        // Write path only places correct values, so filled implies correct.
         private bool IsFullGridComplete()
         {
-            for (int r = 0; r < GridSize; r++)
-                for (int c = 0; c < GridSize; c++)
-                    if (Cells[r, c].IsEmpty) return false;
+            for (int i = 0; i < GridSize; i++)
+                if (!_rowDone[i]) return false;
             return true;
         }
 
