@@ -40,8 +40,10 @@ namespace ChromaLogic.Managers
         private const string KeyGalleryXP         = "CL_GalleryXP";
         private const string KeyLastPlayedDate    = "CL_LastPlayedDate";
         private const string KeyCurrentStreak     = "CL_CurrentStreak";
-        private const string KeyCompletedVessels  = "CL_CompletedVessels";
-        private const string KeyUnlockedPacks     = "CL_UnlockedPacks";
+        private const string KeyCompletedVessels    = "CL_CompletedVessels";
+        private const string KeyUnlockedPacks       = "CL_UnlockedPacks";
+        private const string KeyMeditationShapes    = "CL_MeditationShapes";
+        private const string KeyMeditationColours   = "CL_MeditationColours";
 
         // Delimiter for serialising List<string> into a single PlayerPrefs entry.
         private const char ListDelimiter = '|';
@@ -87,6 +89,22 @@ namespace ChromaLogic.Managers
 
         /// <summary>Identifiers of content packs the Curator has unlocked.</summary>
         public List<string> UnlockedPackIds { get; private set; }
+
+        /// <summary>
+        /// The four <see cref="ShapeType"/> values used in the Daily Meditation 4×4 grid
+        /// (Phase 9). Defaults to Infinity, Diamond, Star, Heart. Configurable via
+        /// <see cref="SetMeditationVessels"/> in Aesthetic Calibration (Phase 10).
+        /// Must always contain exactly 4 elements.
+        /// </summary>
+        public List<ShapeType> MeditationShapes { get; private set; }
+
+        /// <summary>
+        /// The four <see cref="ColourType"/> values used in the Daily Meditation 4×4 grid
+        /// (Phase 9). Defaults to Gold, Cobalt, Crimson, Jade. Configurable via
+        /// <see cref="SetMeditationVessels"/> in Aesthetic Calibration (Phase 10).
+        /// Must always contain exactly 4 elements.
+        /// </summary>
+        public List<ColourType> MeditationColours { get; private set; }
 
         // ── C# Events ────────────────────────────────────────────────────
 
@@ -203,6 +221,32 @@ namespace ChromaLogic.Managers
         }
 
         /// <summary>
+        /// Sets the four shapes and four colours used in the Daily Meditation 4×4 grid.
+        /// Both lists must contain exactly 4 elements. Called from Aesthetic Calibration
+        /// (Phase 10) when the Curator customises their Meditation Vessel configuration.
+        /// </summary>
+        /// <param name="shapes">
+        /// Exactly 4 <see cref="ShapeType"/> values. Must not be null.
+        /// </param>
+        /// <param name="colours">
+        /// Exactly 4 <see cref="ColourType"/> values. Must not be null.
+        /// </param>
+        /// <exception cref="ArgumentException">
+        /// Thrown when either list is null or does not contain exactly 4 items.
+        /// </exception>
+        public void SetMeditationVessels(List<ShapeType> shapes, List<ColourType> colours)
+        {
+            if (shapes == null || shapes.Count != 4)
+                throw new ArgumentException("shapes must contain exactly 4 ShapeType values.", nameof(shapes));
+            if (colours == null || colours.Count != 4)
+                throw new ArgumentException("colours must contain exactly 4 ColourType values.", nameof(colours));
+
+            MeditationShapes  = new List<ShapeType>(shapes);
+            MeditationColours = new List<ColourType>(colours);
+            Save();
+        }
+
+        /// <summary>
         /// Updates the daily streak. Call once at the start of each game session.
         /// <list type="bullet">
         ///   <item><description>
@@ -305,6 +349,12 @@ namespace ChromaLogic.Managers
             PlayerPrefs.SetString(KeyUnlockedPacks,
                 string.Join(ListDelimiter, UnlockedPackIds));
 
+            PlayerPrefs.SetString(KeyMeditationShapes,
+                string.Join(ListDelimiter, MeditationShapes));
+
+            PlayerPrefs.SetString(KeyMeditationColours,
+                string.Join(ListDelimiter, MeditationColours));
+
             PlayerPrefs.Save();
         }
 
@@ -327,6 +377,14 @@ namespace ChromaLogic.Managers
 
             CompletedVesselIds = ParseList(PlayerPrefs.GetString(KeyCompletedVessels, string.Empty));
             UnlockedPackIds    = ParseList(PlayerPrefs.GetString(KeyUnlockedPacks,    string.Empty));
+
+            MeditationShapes  = ParseEnumList(
+                PlayerPrefs.GetString(KeyMeditationShapes,  string.Empty),
+                DefaultMeditationShapes());
+
+            MeditationColours = ParseEnumList(
+                PlayerPrefs.GetString(KeyMeditationColours, string.Empty),
+                DefaultMeditationColours());
         }
 
         // Splits a pipe-delimited string into a List<string>, discarding empty entries.
@@ -341,5 +399,30 @@ namespace ChromaLogic.Managers
 
             return list;
         }
+
+        // Parses a pipe-delimited string of enum names into a typed list.
+        // Returns fallback when the raw string is absent, empty, or does not yield
+        // exactly 4 valid values — ensuring the Meditation grid is always fully configured.
+        private static List<T> ParseEnumList<T>(string raw, List<T> fallback) where T : struct, Enum
+        {
+            if (string.IsNullOrEmpty(raw)) return fallback;
+
+            var list = new List<T>(4);
+            foreach (string entry in raw.Split(ListDelimiter))
+                if (!string.IsNullOrEmpty(entry) && Enum.TryParse(entry, out T value))
+                    list.Add(value);
+
+            return list.Count == 4 ? list : fallback;
+        }
+
+        private static List<ShapeType> DefaultMeditationShapes() => new List<ShapeType>
+        {
+            ShapeType.Infinity, ShapeType.Diamond, ShapeType.Star, ShapeType.Heart
+        };
+
+        private static List<ColourType> DefaultMeditationColours() => new List<ColourType>
+        {
+            ColourType.Gold, ColourType.Cobalt, ColourType.Crimson, ColourType.Jade
+        };
     }
 }
