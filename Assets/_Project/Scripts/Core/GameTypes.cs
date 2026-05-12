@@ -102,4 +102,22 @@ namespace ChromaLogic.Core
             Shape = shape; Colour = colour; IsPreFilled = isPreFilled;
         }
     }
+
+    /// <summary>
+    /// Difficulty tier for the jigsaw phase of a completed Vessel, expressed as
+    /// piece count. Used by <c>ProgressionManager.AwardJigsawXP</c> to determine
+    /// the Gallery XP reward. Never use the word "difficulty" in UI strings —
+    /// always name the tier (e.g. "Meditative", "GrandMaster").
+    /// </summary>
+    public enum JigsawDifficulty
+    {
+        /// <summary>12 pieces.</summary>
+        Meditative,
+        /// <summary>24 pieces.</summary>
+        Focused,
+        /// <summary>48 pieces.</summary>
+        Challenging,
+        /// <summary>96 pieces.</summary>
+        GrandMaster
+    }
 }
