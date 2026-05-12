@@ -5,7 +5,10 @@
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\jason\\\\Chroma-Logic\\\\Library\\\\PackageCache\" -Directory | Where-Object { $_.Name -match \"textmeshpro|inputsystem|addressables|purchasing|services\" } | Select-Object Name | Sort-Object Name)",
       "WebSearch",
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:docs.unity3d.com)"
+      "WebFetch(domain:docs.unity3d.com)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
     ]
   }
 }
