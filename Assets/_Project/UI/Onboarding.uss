@@ -1,0 +1,236 @@
+/* ── Onboarding.uss — Phase 3 Onboarding screen styles ─────────────────── */
+
+/* ── Root & screens ────────────────────────────────────────────────────── */
+
+.onboarding-root {
+    flex-grow: 1;
+    background-color: #0D0F1A;
+    align-items: stretch;
+}
+
+.onboarding-screen {
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px 24px 32px 24px;
+}
+
+.hidden {
+    display: none;
+}
+
+.onboarding-spacer {
+    flex-grow: 1;
+}
+
+/* ── Typography ─────────────────────────────────────────────────────────── */
+
+.onboarding-title {
+    color: #C8A97E;
+    font-size: 28px;
+    -unity-font-style: bold;
+    -unity-text-align: upper-center;
+    white-space: normal;
+    margin-bottom: 20px;
+}
+
+.onboarding-body {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 15px;
+    -unity-text-align: upper-center;
+    white-space: normal;
+    max-width: 310px;
+    margin-bottom: 24px;
+}
+
+.onboarding-rank {
+    color: #7ECBA1;
+    font-size: 21px;
+    -unity-font-style: bold;
+    -unity-text-align: upper-center;
+    margin-bottom: 14px;
+}
+
+/* ── Screen 1 — harmony demo ─────────────────────────────────────────── */
+
+.harmony-demo {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 8px 0 24px 0;
+}
+
+.demo-cell {
+    width: 84px;
+    height: 84px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: #C8A97E;
+    background-color: rgba(200, 169, 126, 0.08);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.demo-cell--colour {
+    background-color: rgba(212, 168, 83, 0.35);
+}
+
+.demo-shape-symbol {
+    font-size: 34px;
+    color: #FFFFFF;
+    -unity-text-align: upper-center;
+}
+
+.demo-axis-label {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.55);
+    -unity-text-align: upper-center;
+    margin-top: 4px;
+}
+
+.demo-plus {
+    font-size: 28px;
+    color: #C8A97E;
+    margin: 0 18px;
+    -unity-text-align: middle-center;
+}
+
+/* ── Screen 2 — tutorial grid ─────────────────────────────────────────── */
+
+.tutorial-grid {
+    width: 312px;
+    height: 312px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+/* ── Cell base ── */
+
+.tutorial-cell {
+    width: 52px;
+    height: 52px;
+    border-width: 1px;
+    border-color: rgba(200, 169, 126, 0.25);
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.tutorial-cell--prefilled {
+    background-color: rgba(200, 169, 126, 0.07);
+}
+
+.tutorial-cell--empty {
+    background-color: rgba(255, 255, 255, 0.03);
+    cursor: link;
+}
+
+.tutorial-cell--selected {
+    border-width: 2px;
+    border-color: #C8A97E;
+    background-color: rgba(200, 169, 126, 0.18);
+}
+
+/* ── Colour overlays (applied alongside --prefilled / --empty / --correct) ── */
+
+.tutorial-cell--amber  { background-color: rgba(212, 168,  83, 0.38); }
+.tutorial-cell--jade   { background-color: rgba(126, 203, 161, 0.38); }
+.tutorial-cell--cobalt { background-color: rgba( 59, 107, 179, 0.38); }
+.tutorial-cell--violet { background-color: rgba(139,  90, 158, 0.38); }
+.tutorial-cell--rose   { background-color: rgba(201, 126, 158, 0.38); }
+.tutorial-cell--gold   { background-color: rgba(200, 169, 126, 0.38); }
+
+/* ── Result states (declared after colour overlays so they take precedence) ── */
+
+.tutorial-cell--correct {
+    border-width: 2px;
+    border-color: #7ECBA1;
+    background-color: rgba(126, 203, 161, 0.22);
+    transition-property: background-color, border-color;
+    transition-duration: 0.2s;
+}
+
+.tutorial-cell--wrong {
+    border-width: 2px;
+    border-color: #D4A853;
+    transition-property: border-color;
+    transition-duration: 0.15s;
+}
+
+/* ── Shape label inside a cell ── */
+
+.cell-shape-label {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.92);
+    -unity-text-align: middle-center;
+}
+
+/* ── Palette rows ─────────────────────────────────────────────────────── */
+
+.palette-row {
+    flex-direction: row;
+    justify-content: center;
+    margin: 5px 0;
+}
+
+.palette-shape-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 23px;
+    border-width: 2px;
+    border-color: rgba(200, 169, 126, 0.35);
+    background-color: rgba(255, 255, 255, 0.05);
+    margin: 0 3px;
+    font-size: 20px;
+    color: #FFFFFF;
+    -unity-text-align: middle-center;
+}
+
+.palette-shape-btn--selected {
+    border-color: #C8A97E;
+    background-color: rgba(200, 169, 126, 0.28);
+}
+
+.palette-colour-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 23px;
+    border-width: 2px;
+    border-color: rgba(200, 169, 126, 0.35);
+    margin: 0 3px;
+}
+
+.palette-colour-btn--selected {
+    border-width: 3px;
+    border-color: #FFFFFF;
+}
+
+.palette-colour-btn--amber  { background-color: #D4A853; }
+.palette-colour-btn--jade   { background-color: #7ECBA1; }
+.palette-colour-btn--cobalt { background-color: #3B6BB3; }
+.palette-colour-btn--violet { background-color: #8B5A9E; }
+.palette-colour-btn--rose   { background-color: #C97E9E; }
+.palette-colour-btn--gold   { background-color: #C8A97E; }
+
+/* ── Continue / Enter buttons ─────────────────────────────────────────── */
+
+.btn-continue {
+    background-color: #C8A97E;
+    color: #0D0F1A;
+    border-width: 0;
+    border-radius: 26px;
+    padding: 14px 52px;
+    font-size: 16px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    margin-top: 20px;
+    min-width: 200px;
+    cursor: link;
+}
+
+.btn-enter {
+    background-color: #7ECBA1;
+}

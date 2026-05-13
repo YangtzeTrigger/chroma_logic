@@ -136,6 +136,30 @@ namespace ChromaLogic.UI
         }
 
         /// <summary>
+        /// Hides the bottom navigation bar by adding the <c>hidden</c> USS class to
+        /// every tab button. Call from <see cref="OnboardingController"/> on entry.
+        /// </summary>
+        public void HideNavBar()
+        {
+            _galleryTab? .AddToClassList(ClassHidden);
+            _solveTab?   .AddToClassList(ClassHidden);
+            _meditateTab?.AddToClassList(ClassHidden);
+            _archiveTab? .AddToClassList(ClassHidden);
+        }
+
+        /// <summary>
+        /// Restores the bottom navigation bar by removing the <c>hidden</c> USS class
+        /// from every tab button. Call from <see cref="OnboardingController"/> on exit.
+        /// </summary>
+        public void ShowNavBar()
+        {
+            _galleryTab? .RemoveFromClassList(ClassHidden);
+            _solveTab?   .RemoveFromClassList(ClassHidden);
+            _meditateTab?.RemoveFromClassList(ClassHidden);
+            _archiveTab? .RemoveFromClassList(ClassHidden);
+        }
+
+        /// <summary>
         /// Updates tab highlight state so the tab matching <paramref name="sceneName"/>
         /// carries the <c>tab--active</c> USS class and all others do not.
         /// <para>

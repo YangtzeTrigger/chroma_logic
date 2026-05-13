@@ -1,0 +1,63 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <ui:Style src="Onboarding.uss" />
+
+    <ui:VisualElement name="onboarding-root" class="onboarding-root">
+
+        <!-- ── Screen 0: The First Vessel ─────────────────────────────── -->
+        <ui:VisualElement name="screen-0" class="onboarding-screen">
+            <ui:VisualElement class="onboarding-spacer" />
+            <ui:Label name="title-0" text="The First Vessel" class="onboarding-title" />
+            <ui:Label name="body-0"
+                text="The Gallery holds works of chromatic logic. Each Vessel is a puzzle of nine shapes and nine colours, waiting to be solved."
+                class="onboarding-body" />
+            <ui:VisualElement class="onboarding-spacer" />
+            <ui:Button name="btn-0" text="Continue" class="btn-continue" />
+        </ui:VisualElement>
+
+        <!-- ── Screen 1: Chromatic Harmony ────────────────────────────── -->
+        <ui:VisualElement name="screen-1" class="onboarding-screen hidden">
+            <ui:VisualElement class="onboarding-spacer" />
+            <ui:Label name="title-1" text="Chromatic Harmony" class="onboarding-title" />
+            <ui:Label name="body-1"
+                text="Every cell holds two truths — a Shape and a Colour. Each shape appears once in every row, column, and section. So does every colour."
+                class="onboarding-body" />
+            <ui:VisualElement name="harmony-demo" class="harmony-demo">
+                <ui:VisualElement class="demo-cell">
+                    <ui:Label text="◆" class="demo-shape-symbol" />
+                    <ui:Label text="Shape" class="demo-axis-label" />
+                </ui:VisualElement>
+                <ui:Label text="+" class="demo-plus" />
+                <ui:VisualElement class="demo-cell demo-cell--colour">
+                    <ui:Label text="Colour" class="demo-axis-label" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="onboarding-spacer" />
+            <ui:Button name="btn-1" text="Continue" class="btn-continue" />
+        </ui:VisualElement>
+
+        <!-- ── Screen 2: The Quiet Gallery (tutorial Vessel) ──────────── -->
+        <ui:VisualElement name="screen-2" class="onboarding-screen hidden">
+            <ui:Label name="title-2" text="The Quiet Gallery" class="onboarding-title" />
+            <ui:Label name="body-2"
+                text="Select a cell, then choose its shape and colour. Trust the pattern."
+                class="onboarding-body" />
+            <ui:VisualElement name="tutorial-grid-root" class="tutorial-grid" />
+            <ui:VisualElement name="palette-shapes"  class="palette-row" />
+            <ui:VisualElement name="palette-colours" class="palette-row" />
+            <ui:Button name="btn-2" text="Continue" class="btn-continue hidden" />
+        </ui:VisualElement>
+
+        <!-- ── Screen 3: Curator's Welcome ────────────────────────────── -->
+        <ui:VisualElement name="screen-3" class="onboarding-screen hidden">
+            <ui:VisualElement class="onboarding-spacer" />
+            <ui:Label name="title-3" text="Curator's Welcome" class="onboarding-title" />
+            <ui:Label name="rank-label" text="Neophyte Curator" class="onboarding-rank" />
+            <ui:Label name="body-3"
+                text="The Gallery opens before you. Your first Vessel awaits."
+                class="onboarding-body" />
+            <ui:VisualElement class="onboarding-spacer" />
+            <ui:Button name="btn-3" text="Enter The Gallery" class="btn-continue btn-enter" />
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>
