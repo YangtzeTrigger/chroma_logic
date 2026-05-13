@@ -471,15 +471,15 @@ namespace ChromaLogic.UI
         {
             var root = _document.rootVisualElement;
 
-            _difficultyScreen = root.Q(NameDifficultyScreen);
-            _cardGrandmaster  = root.Q(NameCardGrandmaster);
+            _difficultyScreen = root.Q<VisualElement>(NameDifficultyScreen);
+            _cardGrandmaster  = root.Q<VisualElement>(NameCardGrandmaster);
             _btnGrandmaster   = root.Q<Button>(NameBtnGrandmaster);
-            _gameScreen       = root.Q(NameGameScreen);
-            _flashOverlay     = root.Q(NameFlashOverlay);
-            _flashImage       = root.Q(NameFlashImage);
-            _boardContainer   = root.Q(NameBoardContainer);
-            _boardEl          = root.Q(NameJigsawBoard);
-            _resultPanel      = root.Q(NameResultPanel);
+            _gameScreen       = root.Q<VisualElement>(NameGameScreen);
+            _flashOverlay     = root.Q<VisualElement>(NameFlashOverlay);
+            _flashImage       = root.Q<VisualElement>(NameFlashImage);
+            _boardContainer   = root.Q<VisualElement>(NameBoardContainer);
+            _boardEl          = root.Q<VisualElement>(NameJigsawBoard);
+            _resultPanel      = root.Q<VisualElement>(NameResultPanel);
             _pieceCounter     = root.Q<Label>(NamePieceCounter);
 
             root.Q<Button>(NameBtnBack) ?.RegisterCallback<ClickEvent>(_ => GameManager.Instance?.LoadDashboard());

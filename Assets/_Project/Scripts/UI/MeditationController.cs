@@ -314,7 +314,7 @@ namespace ChromaLogic.UI
             }
 
             string symbol   = ShapeSymbols.TryGetValue(cell.Shape!.Value,  out string sym) ? sym  : "?";
-            Color  tintBase = ColourMap   .TryGetValue(cell.Colour!.Value, out Color  col) ? col  : Color.white;
+            Color  tintBase = ColourMap   .TryGetValue(cell.Colour!.Value, out Color  tintColor) ? tintColor : Color.white;
             bool   isPre    = cell.IsPreFilled;
 
             element.style.backgroundColor = new Color(tintBase.r, tintBase.g, tintBase.b, isPre ? 0.22f : 0.14f);
@@ -520,7 +520,7 @@ namespace ChromaLogic.UI
         /// </summary>
         private static string GenerateVesselName(int seed)
         {
-            var rng = new Random(seed);
+            var rng = new System.Random(seed);
             return Adjectives[rng.Next(Adjectives.Length)] + " " + Nouns[rng.Next(Nouns.Length)];
         }
     }
