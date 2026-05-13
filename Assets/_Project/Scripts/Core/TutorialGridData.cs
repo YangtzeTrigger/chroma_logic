@@ -36,6 +36,16 @@ namespace ChromaLogic.Core
         public static readonly string[] ColourSuffix =
             { "amber", "jade", "cobalt", "violet", "rose", "gold" };
 
+        // ── Full-game palettes (all 9 values, index == enum int value) ────
+
+        // Index matches ShapeType enum: Infinity=0, Star=1 … Triangle=8
+        public static readonly string[] AllShapeSymbols =
+            { "∞", "★", "⬡", "☾", "◆", "✚", "♥", "○", "▲" };
+
+        // Index matches ColourType enum: Crimson=0, Amber=1 … Gold=8
+        public static readonly string[] AllColourSuffix =
+            { "crimson", "amber", "jade", "cobalt", "violet", "teal", "rose", "slate", "gold" };
+
         // ── Solution grids (indices into TutorialShapes / TutorialColours) ─
 
         // Each row and column contains 0–5 exactly once.

@@ -1,0 +1,32 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <ui:Style src="Solve.uss" />
+
+    <ui:VisualElement name="solve-root" class="solve-root">
+
+        <!-- ── Header: clarity label · error dots · insight button ────── -->
+        <ui:VisualElement name="solve-header" class="solve-header">
+            <ui:Label name="clarity-label" text="Sunlit" class="clarity-label" />
+            <ui:VisualElement name="error-dots" class="error-dots">
+                <ui:VisualElement name="error-dot-0" class="error-dot" />
+                <ui:VisualElement name="error-dot-1" class="error-dot" />
+                <ui:VisualElement name="error-dot-2" class="error-dot" />
+            </ui:VisualElement>
+            <ui:Button name="btn-insight" text="Insight" class="btn-insight" />
+        </ui:VisualElement>
+
+        <!-- ── 9×9 grid (cells injected by GridRenderer) ──────────────── -->
+        <ui:VisualElement name="solve-grid-wrapper" class="solve-grid-wrapper">
+            <ui:VisualElement name="solve-grid" class="solve-grid" />
+        </ui:VisualElement>
+
+        <!-- ── Tile tray: shape palette · colour palette · actions ─────── -->
+        <ui:VisualElement name="solve-tray" class="solve-tray">
+            <ui:VisualElement name="palette-shapes"  class="palette-row" />
+            <ui:VisualElement name="palette-colours" class="palette-row" />
+            <ui:VisualElement name="tray-actions" class="tray-actions">
+                <ui:Button name="btn-clear" text="Clear" class="btn-clear hidden" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>
