@@ -5,6 +5,8 @@
          noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
          editor-extension-mode="False">
 
+    <ui:Style src="Jigsaw.uss" />
+
     <!--
         Jigsaw.uxml — Phase 7 Jigsaw puzzle scene.
         Two screens: difficulty-screen (initial) and game-screen (after selection).
