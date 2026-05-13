@@ -44,6 +44,9 @@ namespace ChromaLogic.Managers
         /// <summary>Jigsaw puzzle scene (Phase 7).</summary>
         public const string SceneJigsaw     = "Jigsaw";
 
+        /// <summary>Curator Profile and Path of Prestige scene (Phase 8).</summary>
+        public const string SceneProfile    = "Profile";
+
         // ── Singleton ─────────────────────────────────────────────────────
 
         /// <summary>The single active instance. <c>null</c> before the Bootstrap
@@ -124,5 +127,12 @@ namespace ChromaLogic.Managers
         /// scene knows which Vessel image to load.
         /// </summary>
         public void LoadJigsaw() => SceneManager.LoadScene(SceneJigsaw);
+
+        /// <summary>
+        /// Loads the Curator Profile scene (<see cref="SceneProfile"/>).
+        /// Shows the Curator's rank, ledger statistics, earned Designations, and
+        /// the Path of Prestige progression view.
+        /// </summary>
+        public void LoadProfile() => SceneManager.LoadScene(SceneProfile);
     }
 }

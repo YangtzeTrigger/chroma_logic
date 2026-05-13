@@ -1,0 +1,85 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements"
+         xmlns:uie="UnityEditor.UIElements"
+         xsi="http://www.w3.org/2001/XMLSchema-instance"
+         engine="UnityEngine.UIElements"
+         noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+         editor-extension-mode="False">
+
+    <ui:Style src="Profile.uss" />
+    <ui:Template name="PrestigePanel" src="Prestige.uxml" />
+
+    <!--
+        Profile.uxml — Phase 8 Curator Profile scene.
+        Contains two full-screen panels that swap via ProfileController:
+          profile-panel    — portrait, rank, ledger, designations (default visible)
+          prestige-container — Path of Prestige tier view (default hidden)
+        Mounted on a single UIDocument managed by ProfileController.
+    -->
+
+    <ui:VisualElement name="profile-root" class="profile-root">
+
+        <!-- ── Profile panel ────────────────────────────────────────────── -->
+        <ui:VisualElement name="profile-panel" class="profile-panel">
+
+            <!-- Header -->
+            <ui:VisualElement class="profile-header">
+                <ui:Button name="btn-back" class="btn-profile-back" text="← Gallery" />
+                <ui:Label class="profile-heading" text="Curator Profile" />
+                <ui:VisualElement class="header-spacer" />
+            </ui:VisualElement>
+
+            <!-- Scrollable body -->
+            <ui:ScrollView name="profile-scroll" class="profile-scroll"
+                           vertical-scroller-visibility="Hidden"
+                           horizontal-scroller-visibility="Hidden">
+
+                <!-- Portrait + rank badge -->
+                <ui:VisualElement class="portrait-section">
+                    <ui:VisualElement name="curator-portrait" class="curator-portrait" />
+                    <ui:VisualElement class="rank-badge">
+                        <ui:Label name="rank-title"    class="rank-title"    text="" />
+                        <ui:Label name="rank-subtitle" class="rank-subtitle" text="" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Curator's Ledger -->
+                <ui:VisualElement class="profile-section">
+                    <ui:Label class="section-title" text="Curator&#39;s Ledger" />
+                    <ui:VisualElement class="ledger-grid">
+                        <ui:VisualElement class="ledger-item">
+                            <ui:Label name="ledger-lp"        class="ledger-value" text="" />
+                            <ui:Label                         class="ledger-label" text="Logic Points" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="ledger-item">
+                            <ui:Label name="ledger-vessels"   class="ledger-value" text="" />
+                            <ui:Label                         class="ledger-label" text="Vessels Completed" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="ledger-item">
+                            <ui:Label name="ledger-revelation" class="ledger-value" text="" />
+                            <ui:Label                          class="ledger-label" text="Revelation" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Designations -->
+                <ui:VisualElement class="profile-section">
+                    <ui:Label class="section-title" text="Designations" />
+                    <ui:VisualElement name="designation-list" class="designation-list" />
+                    <ui:Label name="designation-empty" class="empty-state-label"
+                              text="No Designations earned yet." />
+                </ui:VisualElement>
+
+                <!-- Path of Prestige nav button -->
+                <ui:Button name="btn-prestige" class="btn-prestige" text="Path of Prestige" />
+
+            </ui:ScrollView>
+        </ui:VisualElement>
+
+        <!-- ── Prestige panel (template instance) ───────────────────────── -->
+        <ui:Instance template="PrestigePanel"
+                     name="prestige-container"
+                     class="prestige-container hidden" />
+
+    </ui:VisualElement>
+
+</ui:UXML>

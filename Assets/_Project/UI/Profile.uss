@@ -1,0 +1,179 @@
+/* ── Global ──────────────────────────────────────────────────────────────── */
+
+.hidden {
+    display: none;
+}
+
+/* ── Root & layout ───────────────────────────────────────────────────────── */
+
+.profile-root {
+    flex-grow: 1;
+    flex-direction: column;
+    background-color: #0D0F1A;
+}
+
+.profile-panel,
+.prestige-container {
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+/* ── Shared header ───────────────────────────────────────────────────────── */
+
+.profile-header {
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 16px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(200, 169, 126, 0.1);
+}
+
+.profile-heading {
+    flex-grow: 1;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 17px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+}
+
+/* Spacer matches btn-profile-back width so heading stays visually centred */
+.header-spacer {
+    width: 60px;
+}
+
+.btn-profile-back {
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 13px;
+    width: 60px;
+}
+
+/* ── Profile scroll ──────────────────────────────────────────────────────── */
+
+.profile-scroll {
+    flex-grow: 1;
+}
+
+/* ── Portrait + rank badge ───────────────────────────────────────────────── */
+
+.portrait-section {
+    flex-direction: row;
+    align-items: center;
+    padding: 24px 16px;
+}
+
+.curator-portrait {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    background-color: rgba(200, 169, 126, 0.10);
+    border-width: 2px;
+    border-color: rgba(200, 169, 126, 0.30);
+}
+
+.rank-badge {
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 16px;
+}
+
+.rank-title {
+    color: #C8A97E;
+    font-size: 22px;
+    -unity-font-style: bold;
+}
+
+.rank-subtitle {
+    color: rgba(255, 255, 255, 0.50);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* ── Profile sections ────────────────────────────────────────────────────── */
+
+.profile-section {
+    padding: 0 16px 24px 16px;
+}
+
+.section-title {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 11px;
+    -unity-font-style: bold;
+    margin-bottom: 12px;
+}
+
+/* ── Curator's Ledger grid ───────────────────────────────────────────────── */
+
+.ledger-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.ledger-item {
+    width: 48%;
+    background-color: rgba(200, 169, 126, 0.05);
+    border-width: 1px;
+    border-color: rgba(200, 169, 126, 0.12);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 8px;
+}
+
+.ledger-value {
+    color: #C8A97E;
+    font-size: 18px;
+    -unity-font-style: bold;
+}
+
+.ledger-label {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+/* ── Designations ────────────────────────────────────────────────────────── */
+
+.designation-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+}
+
+.designation-tile {
+    background-color: rgba(200, 169, 126, 0.08);
+    border-width: 1px;
+    border-color: rgba(200, 169, 126, 0.20);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 4px;
+}
+
+.designation-tile-name {
+    color: #C8A97E;
+    font-size: 13px;
+}
+
+.empty-state-label {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 13px;
+    margin: 4px 0;
+}
+
+/* ── Path of Prestige button ─────────────────────────────────────────────── */
+
+.btn-prestige {
+    margin: 16px;
+    background-color: #C8A97E;
+    color: #0D0F1A;
+    border-radius: 10px;
+    font-size: 15px;
+    -unity-font-style: bold;
+    padding: 14px;
+    border-width: 0;
+}
+
+.btn-prestige:hover {
+    background-color: rgba(200, 169, 126, 0.85);
+}

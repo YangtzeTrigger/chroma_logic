@@ -1,0 +1,47 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements"
+         xmlns:uie="UnityEditor.UIElements"
+         xsi="http://www.w3.org/2001/XMLSchema-instance"
+         engine="UnityEngine.UIElements"
+         noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+         editor-extension-mode="False">
+
+    <ui:Style src="Prestige.uss" />
+
+    <!--
+        Prestige.uxml — Phase 8 Path of Prestige panel.
+        Included in Profile.uxml as a <ui:Template> / <ui:Instance>.
+        The outer prestige-container TemplateContainer is managed by ProfileController
+        (hidden/shown by toggling the "hidden" USS class).
+        Inner element queries run from ProfileController's full root —
+        PrestigeController binds its elements via Initialize(root).
+    -->
+
+    <ui:VisualElement name="prestige-panel" class="prestige-panel">
+
+        <!-- Header — reuses .profile-header / .profile-heading from Profile.uss -->
+        <ui:VisualElement class="profile-header">
+            <ui:Button name="btn-prestige-back" class="btn-profile-back" text="← Profile" />
+            <ui:Label class="profile-heading" text="Path of Prestige" />
+            <ui:VisualElement class="header-spacer" />
+        </ui:VisualElement>
+
+        <!-- Current rank summary card with progress bar -->
+        <ui:VisualElement name="current-rank-card" class="current-rank-card">
+            <ui:Label name="prestige-rank-title"    class="prestige-rank-title"    text="" />
+            <ui:Label name="prestige-rank-subtitle" class="prestige-rank-subtitle" text="" />
+            <ui:VisualElement class="progress-bar-track">
+                <ui:VisualElement name="progress-bar-fill" class="progress-bar-fill" />
+            </ui:VisualElement>
+            <ui:Label name="progress-label" class="progress-label" text="" />
+        </ui:VisualElement>
+
+        <!-- Tier node list — populated dynamically by PrestigeController -->
+        <ui:ScrollView name="prestige-scroll" class="prestige-scroll"
+                       vertical-scroller-visibility="Hidden"
+                       horizontal-scroller-visibility="Hidden">
+            <ui:VisualElement name="tier-list" class="tier-list" />
+        </ui:ScrollView>
+
+    </ui:VisualElement>
+
+</ui:UXML>

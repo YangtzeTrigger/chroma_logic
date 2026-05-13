@@ -64,6 +64,12 @@ namespace ChromaLogic.Managers
         // designation list. All other state is read live from PlayerDataManager.
         private List<string> _earnedDesignations;
 
+        /// <summary>
+        /// Read-only view of every designation ID the Curator has earned.
+        /// Designation IDs are defined as <c>public const string</c> fields on this class.
+        /// </summary>
+        public IReadOnlyList<string> EarnedDesignations => _earnedDesignations;
+
         // ── C# Events ─────────────────────────────────────────────────────
 
         /// <summary>

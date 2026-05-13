@@ -1,0 +1,133 @@
+/* ── Prestige panel layout ───────────────────────────────────────────────── */
+
+.prestige-panel {
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+/* ── Current rank summary card ───────────────────────────────────────────── */
+
+.current-rank-card {
+    margin: 16px;
+    background-color: rgba(200, 169, 126, 0.08);
+    border-width: 1px;
+    border-color: rgba(200, 169, 126, 0.20);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.prestige-rank-title {
+    color: #C8A97E;
+    font-size: 22px;
+    -unity-font-style: bold;
+    margin-bottom: 4px;
+}
+
+.prestige-rank-subtitle {
+    color: rgba(255, 255, 255, 0.50);
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+/* ── LP progress bar ─────────────────────────────────────────────────────── */
+
+.progress-bar-track {
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.10);
+    border-radius: 3px;
+}
+
+.progress-bar-fill {
+    height: 6px;
+    background-color: #C8A97E;
+    border-radius: 3px;
+    width: 0%;
+}
+
+.progress-label {
+    color: rgba(255, 255, 255, 0.50);
+    font-size: 11px;
+    margin-top: 6px;
+}
+
+/* ── Prestige scroll and tier list ───────────────────────────────────────── */
+
+.prestige-scroll {
+    flex-grow: 1;
+}
+
+.tier-list {
+    padding: 0 16px 40px 16px;
+}
+
+/* ── Tier nodes ──────────────────────────────────────────────────────────── */
+
+.tier-node {
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Vertical line connecting adjacent tier nodes — margin-left centres it on the 40px icon */
+.tier-connector {
+    width: 2px;
+    height: 32px;
+    background-color: rgba(200, 169, 126, 0.20);
+    margin-left: 19px;
+}
+
+.tier-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    flex-shrink: 0;
+}
+
+.tier-icon--completed {
+    background-color: #C8A97E;
+    border-width: 2px;
+    border-color: #C8A97E;
+}
+
+.tier-icon--current {
+    background-color: rgba(200, 169, 126, 0.15);
+    border-width: 2px;
+    border-color: #C8A97E;
+}
+
+.tier-icon--locked {
+    background-color: rgba(255, 255, 255, 0.04);
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.10);
+}
+
+.tier-content {
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 16px;
+    padding: 8px 0;
+}
+
+/* ── Tier rank name — state variants ─────────────────────────────────────── */
+
+.tier-rank-name--completed {
+    color: #C8A97E;
+    font-size: 15px;
+    -unity-font-style: bold;
+}
+
+.tier-rank-name--current {
+    color: #C8A97E;
+    font-size: 15px;
+    -unity-font-style: bold;
+}
+
+.tier-rank-name--locked {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 15px;
+}
+
+.tier-lp-label {
+    color: rgba(255, 255, 255, 0.40);
+    font-size: 12px;
+    margin-top: 2px;
+}
