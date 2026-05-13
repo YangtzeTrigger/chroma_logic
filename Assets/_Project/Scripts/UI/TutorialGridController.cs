@@ -243,19 +243,11 @@ namespace ChromaLogic.UI
 
         private static void AnimateSuccess(VisualElement cell)
         {
-            DOTween.To(
-                () => cell.transform.scale,
-                v  => cell.transform.scale = v,
-                new Vector3(1.12f, 1.12f, 1f),
-                0.1f
-            ).OnComplete(() =>
-                DOTween.To(
-                    () => cell.transform.scale,
-                    v  => cell.transform.scale = v,
-                    Vector3.one,
-                    0.15f
-                )
-            );
+            DOVirtual.Float(1f, 1.12f, 0.1f,
+                v => cell.style.scale = new StyleScale(new Scale(new Vector3(v, v, 1f))))
+            .OnComplete(() =>
+                DOVirtual.Float(1.12f, 1f, 0.15f,
+                    v => cell.style.scale = new StyleScale(new Scale(new Vector3(v, v, 1f)))));
         }
 
         private static void AnimateWrong(VisualElement cell)
