@@ -132,7 +132,10 @@ namespace ChromaLogic.UI
             var card = new VisualElement();
             card.AddToClassList("vessel-card");
             card.RegisterCallback<ClickEvent>(_ =>
-                Debug.Log("[ArchiveController] Jigsaw (Phase 7) — not yet implemented."));
+            {
+                PlayerPrefs.SetString("CL_PendingJigsawVesselId", vesselId);
+                GameManager.Instance?.LoadJigsaw();
+            });
 
             // Image placeholder
             var img = new VisualElement();

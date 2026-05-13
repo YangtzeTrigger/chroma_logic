@@ -1,0 +1,232 @@
+/* ── Jigsaw.uss — Phase 7 Jigsaw puzzle scene styles ───────────────────── */
+
+.hidden {
+    display: none;
+}
+
+/* ── Root ────────────────────────────────────────────────────────────────── */
+
+.jigsaw-root {
+    flex-grow: 1;
+    flex-direction: column;
+    background-color: #0D0F1A;
+}
+
+/* ── Difficulty selection screen ─────────────────────────────────────────── */
+
+.difficulty-screen {
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+}
+
+.difficulty-title {
+    color: #C8A97E;
+    font-size: 22px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    margin-bottom: 6px;
+}
+
+.difficulty-subtitle {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 13px;
+    -unity-text-align: middle-center;
+    margin-bottom: 28px;
+}
+
+.difficulty-cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.difficulty-card {
+    width: 148px;
+    margin: 8px;
+    background-color: rgba(200, 169, 126, 0.06);
+    border-width: 1px;
+    border-color: rgba(200, 169, 126, 0.2);
+    border-radius: 12px;
+    padding: 16px;
+    align-items: center;
+}
+
+.difficulty-card--locked {
+    opacity: 0.45;
+}
+
+.card-title {
+    color: #C8A97E;
+    font-size: 16px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    margin-bottom: 4px;
+}
+
+.card-meta {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 12px;
+    -unity-text-align: middle-center;
+    margin-bottom: 8px;
+}
+
+.card-lock-label {
+    color: #D4A853;
+    font-size: 11px;
+    -unity-text-align: middle-center;
+    margin-bottom: 8px;
+}
+
+.btn-difficulty {
+    background-color: #C8A97E;
+    color: #0D0F1A;
+    border-width: 0;
+    border-radius: 16px;
+    padding: 8px 20px;
+    font-size: 13px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    cursor: link;
+    min-width: 80px;
+}
+
+/* ── Game screen ─────────────────────────────────────────────────────────── */
+
+.game-screen {
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+
+.jigsaw-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(200, 169, 126, 0.1);
+}
+
+.btn-back {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.55);
+    border-width: 0;
+    font-size: 13px;
+    cursor: link;
+    padding: 4px 0;
+}
+
+.piece-counter {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    -unity-text-align: middle-center;
+    flex-grow: 1;
+    -unity-font-style: italic;
+}
+
+/* ── Flash overlay ───────────────────────────────────────────────────────── */
+
+.flash-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #0D0F1A;
+}
+
+.flash-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+/* ── Board ───────────────────────────────────────────────────────────────── */
+
+.board-container {
+    flex-grow: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.jigsaw-board {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ── Jigsaw pieces ───────────────────────────────────────────────────────── */
+
+.jigsaw-piece {
+    position: absolute;
+    cursor: link;
+    border-radius: 2px;
+    border-width: 0.5px;
+    border-color: rgba(13, 15, 26, 0.6);
+    transition-property: border-color;
+    transition-duration: 0.2s;
+}
+
+.jigsaw-piece--snapped {
+    border-width: 1px;
+    border-color: rgba(126, 203, 161, 0.5);
+}
+
+/* ── Result panel ────────────────────────────────────────────────────────── */
+
+.result-panel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(13, 15, 26, 0.88);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.result-label {
+    color: #C8A97E;
+    font-size: 20px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    margin-bottom: 28px;
+}
+
+.btn-share {
+    background-color: transparent;
+    color: #C8A97E;
+    border-width: 1px;
+    border-color: rgba(200, 169, 126, 0.5);
+    border-radius: 22px;
+    padding: 10px 32px;
+    font-size: 13px;
+    cursor: link;
+    margin-bottom: 12px;
+    min-width: 160px;
+    -unity-text-align: middle-center;
+}
+
+.btn-exit {
+    background-color: #C8A97E;
+    color: #0D0F1A;
+    border-width: 0;
+    border-radius: 22px;
+    padding: 12px 40px;
+    font-size: 14px;
+    -unity-font-style: bold;
+    cursor: link;
+    min-width: 160px;
+    -unity-text-align: middle-center;
+}

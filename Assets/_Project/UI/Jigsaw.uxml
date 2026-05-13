@@ -1,0 +1,83 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements"
+         xmlns:uie="UnityEditor.UIElements"
+         xsi="http://www.w3.org/2001/XMLSchema-instance"
+         engine="UnityEngine.UIElements"
+         noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+         editor-extension-mode="False">
+
+    <!--
+        Jigsaw.uxml — Phase 7 Jigsaw puzzle scene.
+        Two screens: difficulty-screen (initial) and game-screen (after selection).
+    -->
+
+    <ui:VisualElement name="jigsaw-root" class="jigsaw-root">
+
+        <!-- ── Difficulty selection screen ──────────────────────────────── -->
+        <ui:VisualElement name="difficulty-screen" class="difficulty-screen">
+
+            <ui:Label class="difficulty-title" text="Choose your Clarity" />
+            <ui:Label class="difficulty-subtitle"
+                      text="Difficulty shapes the scatter and the challenge." />
+
+            <ui:VisualElement class="difficulty-cards">
+
+                <ui:VisualElement name="card-meditative" class="difficulty-card">
+                    <ui:Label class="card-title"   text="Meditative" />
+                    <ui:Label class="card-meta"    text="12 pieces" />
+                    <ui:Button name="btn-meditative" class="btn-difficulty" text="Select" />
+                </ui:VisualElement>
+
+                <ui:VisualElement name="card-focused" class="difficulty-card">
+                    <ui:Label class="card-title"   text="Focused" />
+                    <ui:Label class="card-meta"    text="24 pieces" />
+                    <ui:Button name="btn-focused" class="btn-difficulty" text="Select" />
+                </ui:VisualElement>
+
+                <ui:VisualElement name="card-challenging" class="difficulty-card">
+                    <ui:Label class="card-title"   text="Challenging" />
+                    <ui:Label class="card-meta"    text="48 pieces" />
+                    <ui:Button name="btn-challenging" class="btn-difficulty" text="Select" />
+                </ui:VisualElement>
+
+                <ui:VisualElement name="card-grandmaster" class="difficulty-card">
+                    <ui:Label class="card-title"   text="Grand Master" />
+                    <ui:Label class="card-meta"    text="96 pieces" />
+                    <ui:Label name="lock-label" class="card-lock-label" text="Gallery Level 10 required" />
+                    <ui:Button name="btn-grandmaster" class="btn-difficulty" text="Select" />
+                </ui:VisualElement>
+
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+
+        <!-- ── Game screen ───────────────────────────────────────────────── -->
+        <ui:VisualElement name="game-screen" class="game-screen hidden">
+
+            <!-- Header -->
+            <ui:VisualElement class="jigsaw-header">
+                <ui:Button name="btn-back"      class="btn-back"      text="← Gallery" />
+                <ui:Label  name="piece-counter" class="piece-counter" text="" />
+            </ui:VisualElement>
+
+            <!-- Full-image flash (shown for 2 seconds before scatter) -->
+            <ui:VisualElement name="flash-overlay" class="flash-overlay hidden">
+                <ui:VisualElement name="flash-image" class="flash-image" />
+            </ui:VisualElement>
+
+            <!-- Puzzle board -->
+            <ui:VisualElement name="board-container" class="board-container">
+                <ui:VisualElement name="jigsaw-board" class="jigsaw-board" />
+            </ui:VisualElement>
+
+            <!-- Completion result panel -->
+            <ui:VisualElement name="result-panel" class="result-panel hidden">
+                <ui:Label  class="result-label" text="Vessel assembled." />
+                <ui:Button name="btn-share" class="btn-share" text="Share" />
+                <ui:Button name="btn-exit"  class="btn-exit"  text="Return to Gallery" />
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+
+</ui:UXML>

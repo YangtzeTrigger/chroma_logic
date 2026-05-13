@@ -41,6 +41,9 @@ namespace ChromaLogic.Managers
         /// <summary>Curator Archive / Constructs scene (Phase 6).</summary>
         public const string SceneArchive    = "Archive";
 
+        /// <summary>Jigsaw puzzle scene (Phase 7).</summary>
+        public const string SceneJigsaw     = "Jigsaw";
+
         // ── Singleton ─────────────────────────────────────────────────────
 
         /// <summary>The single active instance. <c>null</c> before the Bootstrap
@@ -114,5 +117,12 @@ namespace ChromaLogic.Managers
         /// Call this when the Curator navigates to their Constructs collection.
         /// </summary>
         public void LoadArchive() => SceneManager.LoadScene(SceneArchive);
+
+        /// <summary>
+        /// Loads the Jigsaw puzzle scene (<see cref="SceneJigsaw"/>).
+        /// Set <c>PlayerPrefs "CL_PendingJigsawVesselId"</c> before calling so the
+        /// scene knows which Vessel image to load.
+        /// </summary>
+        public void LoadJigsaw() => SceneManager.LoadScene(SceneJigsaw);
     }
 }
