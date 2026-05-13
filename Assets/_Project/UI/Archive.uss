@@ -1,0 +1,142 @@
+/* ── Archive.uss — Phase 6 Archive scene styles ──────────────────────────── */
+
+.hidden {
+    display: none;
+}
+
+/* ── Root ────────────────────────────────────────────────────────────────── */
+
+.archive-root {
+    flex-grow: 1;
+    flex-direction: column;
+    background-color: #0D0F1A;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+
+.archive-header {
+    padding: 16px 16px 8px 16px;
+}
+
+.archive-title {
+    color: #C8A97E;
+    font-size: 20px;
+    -unity-font-style: bold;
+}
+
+/* ── Filter tabs ─────────────────────────────────────────────────────────── */
+
+.filter-tabs {
+    flex-direction: row;
+    padding: 0 16px 0 16px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(200, 169, 126, 0.12);
+    margin-bottom: 4px;
+}
+
+.filter-tab {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.45);
+    border-width: 0;
+    border-bottom-width: 2px;
+    border-bottom-color: transparent;
+    border-radius: 0;
+    padding: 8px 14px;
+    font-size: 13px;
+    cursor: link;
+    margin-right: 4px;
+}
+
+.filter-tab--active {
+    color: #C8A97E;
+    border-bottom-color: #C8A97E;
+}
+
+/* ── Empty state ─────────────────────────────────────────────────────────── */
+
+.archive-empty-label {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 14px;
+    -unity-text-align: middle-center;
+    padding: 40px 16px;
+    flex-grow: 1;
+}
+
+/* ── Vessel grid & scroll ────────────────────────────────────────────────── */
+
+.archive-scroll {
+    flex-grow: 1;
+}
+
+.vessel-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 12px;
+    justify-content: flex-start;
+}
+
+/* ── Vessel card ─────────────────────────────────────────────────────────── */
+
+.vessel-card {
+    width: 160px;
+    margin: 6px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-width: 1px;
+    border-color: rgba(200, 169, 126, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: link;
+}
+
+.vessel-card-image {
+    width: 160px;
+    height: 100px;
+    background-color: rgba(200, 169, 126, 0.1);
+}
+
+.vessel-card-body {
+    padding: 8px 10px 4px 10px;
+}
+
+.vessel-card-name {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 13px;
+    -unity-font-style: bold;
+    margin-bottom: 2px;
+}
+
+.vessel-card-pack {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 11px;
+    margin-bottom: 2px;
+}
+
+.vessel-card-date {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 11px;
+}
+
+.vessel-card-descriptor {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    -unity-font-style: italic;
+}
+
+.vessel-card-footer {
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 4px 8px 8px 8px;
+}
+
+.btn-favourite {
+    background-color: transparent;
+    border-width: 0;
+    color: rgba(200, 169, 126, 0.4);
+    font-size: 16px;
+    cursor: link;
+    padding: 0;
+}
+
+.btn-favourite--active {
+    color: #C8A97E;
+}

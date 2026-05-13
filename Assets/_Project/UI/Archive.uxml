@@ -1,0 +1,47 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements"
+         xmlns:uie="UnityEditor.UIElements"
+         xsi="http://www.w3.org/2001/XMLSchema-instance"
+         engine="UnityEngine.UIElements"
+         noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+         editor-extension-mode="False">
+
+    <!--
+        Archive.uxml — Phase 6 Archive scene (completed Vessel catalogue).
+        Loaded by GameManager.LoadArchive(). Nav bar remains visible.
+    -->
+
+    <ui:VisualElement name="archive-root" class="archive-root">
+
+        <!-- Header -->
+        <ui:VisualElement class="archive-header">
+            <ui:Label class="archive-title" text="Archive" />
+        </ui:VisualElement>
+
+        <!-- Filter tabs -->
+        <ui:VisualElement class="filter-tabs">
+            <ui:Button name="btn-filter-all"
+                       class="filter-tab filter-tab--active"
+                       text="All Vessels" />
+            <ui:Button name="btn-filter-gemstones"
+                       class="filter-tab"
+                       text="Gemstones" />
+            <ui:Button name="btn-filter-constructs"
+                       class="filter-tab"
+                       text="Constructs" />
+        </ui:VisualElement>
+
+        <!-- Empty state -->
+        <ui:Label name="archive-empty"
+                  class="archive-empty-label"
+                  text="No Vessels completed yet." />
+
+        <!-- Vessel grid -->
+        <ui:ScrollView name="archive-scroll" class="archive-scroll"
+                       vertical-scroller-visibility="Hidden"
+                       horizontal-scroller-visibility="Hidden">
+            <ui:VisualElement name="vessel-grid" class="vessel-grid" />
+        </ui:ScrollView>
+
+    </ui:VisualElement>
+
+</ui:UXML>

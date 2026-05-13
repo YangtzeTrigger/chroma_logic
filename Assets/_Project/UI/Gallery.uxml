@@ -1,0 +1,75 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements"
+         xmlns:uie="UnityEditor.UIElements"
+         xsi="http://www.w3.org/2001/XMLSchema-instance"
+         engine="UnityEngine.UIElements"
+         noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+         editor-extension-mode="False">
+
+    <!--
+        Gallery.uxml — Phase 6 Gallery Dashboard (main home screen).
+        Loaded by GameManager.LoadDashboard(). Nav bar remains visible.
+    -->
+
+    <ui:VisualElement name="gallery-root" class="gallery-root">
+
+        <ui:ScrollView class="gallery-scroll" view-data-key="gallery-scroll"
+                       vertical-scroller-visibility="Hidden"
+                       horizontal-scroller-visibility="Hidden">
+
+            <ui:VisualElement class="gallery-scroll-content">
+
+                <!-- Header -->
+                <ui:VisualElement class="gallery-header">
+                    <ui:Label class="gallery-title" text="The Gallery" />
+                    <ui:Label name="header-rank-label" class="gallery-rank-label" text="" />
+                </ui:VisualElement>
+
+                <!-- Featured Vessel -->
+                <ui:VisualElement class="gallery-section">
+                    <ui:Label class="section-title" text="Featured Vessel" />
+                    <ui:VisualElement class="featured-card">
+                        <ui:Label name="featured-vessel-name" class="featured-vessel-name" text="" />
+                        <ui:Label name="featured-vessel-meta" class="featured-vessel-meta" text="" />
+                        <ui:Button name="btn-continue-sequence" class="btn-continue-sequence"
+                                   text="Continue Sequence" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Active Sequences -->
+                <ui:VisualElement class="gallery-section">
+                    <ui:Label class="section-title" text="Active Sequences" />
+                    <ui:Label name="active-sequences-empty" class="empty-state-label"
+                              text="Begin your first Sequence in the Featured Vessel." />
+                    <ui:ScrollView name="active-sequences-scroll" class="active-sequences-scroll"
+                                   mode="Horizontal"
+                                   vertical-scroller-visibility="Hidden"
+                                   horizontal-scroller-visibility="Hidden" />
+                </ui:VisualElement>
+
+                <!-- Curator's Ledger -->
+                <ui:VisualElement class="gallery-section">
+                    <ui:Label class="section-title" text="Curator&#39;s Ledger" />
+                    <ui:VisualElement class="ledger-row">
+                        <ui:Label name="ledger-logic-points"   class="ledger-value" text="" />
+                        <ui:Label name="ledger-gems-collected" class="ledger-value" text="" />
+                        <ui:Label name="ledger-rank"           class="ledger-rank-value" text="" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Daily Canvas -->
+                <ui:VisualElement class="gallery-section">
+                    <ui:Label class="section-title" text="Daily Canvas" />
+                    <ui:VisualElement class="daily-card">
+                        <ui:Label name="daily-date-label" class="daily-date-label" text="" />
+                        <ui:VisualElement name="streak-dots" class="streak-dots" />
+                        <ui:VisualElement class="daily-image-placeholder" />
+                        <ui:Button name="btn-solve-daily" class="btn-solve-daily" text="Solve" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+            </ui:VisualElement>
+        </ui:ScrollView>
+
+    </ui:VisualElement>
+
+</ui:UXML>
