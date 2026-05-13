@@ -1,0 +1,155 @@
+/* ── Reveal.uss — Phase 5 Reveal Sequence overlay styles ────────────────── */
+
+/* ── Root overlay ────────────────────────────────────────────────────────── */
+
+.reveal-root {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(13, 15, 26, 0.95);
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* ── Particle layer ──────────────────────────────────────────────────────── */
+
+.overlay-particles {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* ── Image bloom ─────────────────────────────────────────────────────────── */
+
+.reveal-image-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.reveal-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+/* ── Result screen ───────────────────────────────────────────────────────── */
+
+.reveal-screen {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    opacity: 0;
+}
+
+.vessel-name-label {
+    color: #C8A97E;
+    font-size: 28px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    margin-bottom: 8px;
+}
+
+.pack-name-label {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 14px;
+    -unity-text-align: middle-center;
+    margin-bottom: 6px;
+}
+
+.completion-date-label {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+    -unity-text-align: middle-center;
+    margin-bottom: 16px;
+}
+
+.clarity-achieved-label {
+    color: #7ECBA1;
+    font-size: 16px;
+    -unity-text-align: middle-center;
+    margin-bottom: 40px;
+}
+
+/* ── Action buttons ──────────────────────────────────────────────────────── */
+
+.reveal-actions {
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-next-solve {
+    background-color: #C8A97E;
+    color: #0D0F1A;
+    border-width: 0;
+    border-radius: 22px;
+    padding: 12px 40px;
+    font-size: 15px;
+    -unity-font-style: bold;
+    cursor: link;
+    margin-bottom: 12px;
+    min-width: 180px;
+    -unity-text-align: middle-center;
+}
+
+.btn-share {
+    background-color: transparent;
+    color: #C8A97E;
+    border-width: 1px;
+    border-color: rgba(200, 169, 126, 0.5);
+    border-radius: 22px;
+    padding: 10px 32px;
+    font-size: 13px;
+    cursor: link;
+    margin-bottom: 10px;
+    min-width: 160px;
+    -unity-text-align: middle-center;
+}
+
+.btn-souvenir {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.45);
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.18);
+    border-radius: 22px;
+    padding: 8px 24px;
+    font-size: 12px;
+    cursor: link;
+    min-width: 160px;
+    -unity-text-align: middle-center;
+}
+
+/* ── Cell shards (particle burst) ────────────────────────────────────────── */
+
+.cell-shard {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+}
+
+.cell-shard--crimson { background-color: #C0392B; }
+.cell-shard--amber   { background-color: #D4A853; }
+.cell-shard--jade    { background-color: #7ECBA1; }
+.cell-shard--cobalt  { background-color: #3B6BB3; }
+.cell-shard--violet  { background-color: #8B5A9E; }
+.cell-shard--teal    { background-color: #2E9E8E; }
+.cell-shard--rose    { background-color: #C97E9E; }
+.cell-shard--slate   { background-color: #7A8899; }
+.cell-shard--gold    { background-color: #C8A97E; }

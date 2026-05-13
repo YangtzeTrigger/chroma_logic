@@ -1,0 +1,42 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements"
+         xmlns:uie="UnityEditor.UIElements"
+         xsi="http://www.w3.org/2001/XMLSchema-instance"
+         engine="UnityEngine.UIElements"
+         noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+         editor-extension-mode="False">
+
+    <!--
+        Reveal.uxml — Phase 5 Reveal Sequence overlay
+        Mounted on the same UIDocument as RevealSequence.cs.
+        reveal-root sits over the Solve scene content.
+    -->
+
+    <ui:VisualElement name="reveal-root" class="reveal-root">
+
+        <!-- Particle burst layer — pointer-events: none so it never blocks input -->
+        <ui:VisualElement name="overlay-particles" class="overlay-particles" />
+
+        <!-- Image bloom wrapper — starts at height: 0, wiped open by RevealSequence -->
+        <ui:VisualElement name="reveal-image-wrapper" class="reveal-image-wrapper">
+            <ui:VisualElement name="reveal-image" class="reveal-image" />
+        </ui:VisualElement>
+
+        <!-- Result screen — starts at opacity: 0, faded in after bloom completes -->
+        <ui:VisualElement name="reveal-screen" class="reveal-screen">
+
+            <ui:Label name="vessel-name-label"   class="vessel-name-label"   text="Untitled Vessel" />
+            <ui:Label name="pack-name-label"      class="pack-name-label"      text="The Collection" />
+            <ui:Label name="completion-date-label" class="completion-date-label" text="" />
+            <ui:Label name="clarity-achieved-label" class="clarity-achieved-label" text="" />
+
+            <ui:VisualElement class="reveal-actions">
+                <ui:Button name="btn-next-solve" class="btn-next-solve" text="Next Solve" />
+                <ui:Button name="btn-share"      class="btn-share"      text="Share Moment" />
+                <ui:Button name="btn-souvenir"   class="btn-souvenir"   text="Download as wallpaper" />
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+
+</ui:UXML>

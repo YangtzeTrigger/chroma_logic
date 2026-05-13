@@ -98,6 +98,9 @@ namespace ChromaLogic.UI
             _cells[row, col].AddToClassList(ClassSelected);
         }
 
+        /// <summary>Returns the VisualElement for the cell at (row, col). Used by RevealSequence during shatter.</summary>
+        public VisualElement GetCellElement(int row, int col) => _cells[row, col];
+
         /// <summary>Removes the selection highlight from all cells.</summary>
         public void DeselectAll()
         {

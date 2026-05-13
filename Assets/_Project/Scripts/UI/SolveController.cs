@@ -1,4 +1,5 @@
 using ChromaLogic.Core;
+using ChromaLogic.Gameplay;
 using ChromaLogic.Managers;
 using DG.Tweening;
 using UnityEngine;
@@ -51,6 +52,9 @@ namespace ChromaLogic.UI
         [SerializeField]
         private ClarityLevel _defaultClarity = ClarityLevel.Sunlit;
 
+        [SerializeField]
+        private RevealSequence _revealSequence;
+
         // ── Private state ─────────────────────────────────────────────────
 
         private UIDocument          _document;
@@ -63,6 +67,8 @@ namespace ChromaLogic.UI
         private Label           _clarityLabel;
         private VisualElement[] _errorDots;
         private Button          _btnInsight;
+
+        private ClarityLevel    _activeClarity;
 
         private int _selectedRow = -1;
         private int _selectedCol = -1;
@@ -86,12 +92,12 @@ namespace ChromaLogic.UI
 
         private void Start()
         {
-            var root    = _document.rootVisualElement;
-            var clarity = ReadPendingClarity();
+            var root = _document.rootVisualElement;
+            _activeClarity = ReadPendingClarity();
 
             // Generate puzzle.
             _solver = new SudokuSolver();
-            _solver.GeneratePuzzle(clarity);
+            _solver.GeneratePuzzle(_activeClarity);
             _gridData = new GridData(_solver);
 
             // Subscribe to GridData events before rendering so no event is missed.
@@ -106,12 +112,12 @@ namespace ChromaLogic.UI
                 _btnInsight);
 
             // Subscribe to component events.
-            _gridRenderer.OnCellTapped   += HandleCellTapped;
-            _trayController.OnTilePicked  += HandleTilePicked;
-            _trayController.OnClearRequested += HandleClearRequested;
-            _trayController.OnInsightRequested += HandleInsightRequested;
+            _gridRenderer.OnCellTapped         += HandleCellTapped;
+            _trayController.OnTilePicked        += HandleTilePicked;
+            _trayController.OnClearRequested    += HandleClearRequested;
+            _trayController.OnInsightRequested  += HandleInsightRequested;
 
-            UpdateClarityLabel(clarity);
+            UpdateClarityLabel(_activeClarity);
             UpdateErrorDots(0);
         }
 
@@ -225,11 +231,16 @@ namespace ChromaLogic.UI
             _selectedRow = -1;
             _selectedCol = -1;
 
-            PersistentCanvasController.Instance?.ShowToast("Vessel complete.", 3f);
-
-            // Phase 5 will intercept OnGridComplete to start The Reveal sequence before
-            // navigating. For now, return to the Gallery after a brief delay.
-            DOVirtual.DelayedCall(3.5f, () => GameManager.Instance?.LoadDashboard());
+            if (_revealSequence != null)
+            {
+                _revealSequence.VesselClarity = _activeClarity;
+                _revealSequence.Begin(_gridRenderer, _gridData, _document.rootVisualElement);
+            }
+            else
+            {
+                PersistentCanvasController.Instance?.ShowToast("Vessel complete.", 3f);
+                DOVirtual.DelayedCall(3.5f, () => GameManager.Instance?.LoadDashboard());
+            }
         }
 
         private void HandleErrorCountChanged(int newCount)

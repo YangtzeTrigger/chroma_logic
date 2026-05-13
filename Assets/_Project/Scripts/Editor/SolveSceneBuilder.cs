@@ -1,3 +1,4 @@
+using ChromaLogic.Gameplay;
 using ChromaLogic.Managers;
 using ChromaLogic.UI;
 using UnityEditor;
@@ -30,8 +31,9 @@ namespace ChromaLogic.Editor
     /// </summary>
     internal static class SolveSceneBuilder
     {
-        private const string ScenePath = "Assets/_Project/Scenes/Solve.unity";
-        private const string UxmlPath  = "Assets/_Project/UI/Solve.uxml";
+        private const string ScenePath     = "Assets/_Project/Scenes/Solve.unity";
+        private const string UxmlPath      = "Assets/_Project/UI/Solve.uxml";
+        private const string RevealUxmlPath = "Assets/_Project/UI/Reveal.uxml";
 
         [MenuItem("Chroma-Logic/Setup/Create Solve Scene")]
         private static void CreateSolveScene()
@@ -65,6 +67,29 @@ namespace ChromaLogic.Editor
             go.AddComponent<GridRenderer>();
             go.AddComponent<TileTrayController>();
 
+            // RevealSequence needs its own UIDocument (Reveal.uxml), so it lives on a
+            // separate GameObject. Its UIDocument sort order must be higher than Solve's
+            // so the overlay renders on top.
+            var revealGo    = new GameObject("Reveal");
+            var revealDoc   = revealGo.AddComponent<UIDocument>();
+            revealDoc.sortingOrder = 1;
+
+            var revealUxml = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(RevealUxmlPath);
+            if (revealUxml != null)
+                revealDoc.visualTreeAsset = revealUxml;
+            else
+                Debug.LogWarning("[SolveSceneBuilder] Reveal.uxml not found at " + RevealUxmlPath +
+                                 ". Assign it manually on the Reveal UIDocument component.");
+
+            var revealSeq  = revealGo.AddComponent<RevealSequence>();
+            var solveCtrl  = go.GetComponent<SolveController>();
+            if (solveCtrl != null)
+            {
+                var so = new SerializedObject(solveCtrl);
+                so.FindProperty("_revealSequence").objectReferenceValue = revealSeq;
+                so.ApplyModifiedProperties();
+            }
+
             bool saved = EditorSceneManager.SaveScene(scene, ScenePath);
             if (!saved)
             {
@@ -77,7 +102,9 @@ namespace ChromaLogic.Editor
             Debug.Log("[SolveSceneBuilder] Solve scene created: " + ScenePath);
             Debug.Log("[SolveSceneBuilder] Next steps:\n" +
                       "  1. File ▸ Build Settings ▸ add Solve.unity to the scene list.\n" +
-                      "  2. Assign a PanelSettings asset to the UIDocument if needed.");
+                      "  2. Assign a PanelSettings asset to both UIDocument components if needed.\n" +
+                      "  3. On the Reveal GO: assign RevealSprite, VesselName, PackName on the RevealSequence component.\n" +
+                      "  4. On SolveController: assign the RevealSequence component reference in the Inspector.");
         }
     }
 }
