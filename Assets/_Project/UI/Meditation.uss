@@ -1,0 +1,311 @@
+/* ── Global ──────────────────────────────────────────────────────────────── */
+
+.hidden {
+    display: none;
+}
+
+/* ── Root ────────────────────────────────────────────────────────────────── */
+
+.meditation-root {
+    flex-grow: 1;
+    flex-direction: column;
+    background-color: #0D0F1A;
+}
+
+.landing-screen,
+.meditation-screen {
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+/* ── Landing: Sanctuary header ───────────────────────────────────────────── */
+
+.sanctuary-header {
+    align-items: center;
+    padding: 48px 16px 24px 16px;
+}
+
+.sanctuary-title {
+    color: #C8A97E;
+    font-size: 28px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+}
+
+.sanctuary-subtitle {
+    color: rgba(255, 255, 255, 0.50);
+    font-size: 14px;
+    -unity-text-align: middle-center;
+    margin-top: 6px;
+}
+
+/* ── Landing: vessel info ────────────────────────────────────────────────── */
+
+.vessel-info-section {
+    padding: 0 32px;
+    align-items: center;
+}
+
+.meditation-vessel-name {
+    color: #C8A97E;
+    font-size: 20px;
+    -unity-text-align: middle-center;
+    margin-bottom: 12px;
+}
+
+.meditation-description {
+    color: rgba(255, 255, 255, 0.60);
+    font-size: 14px;
+    -unity-text-align: middle-center;
+    white-space: normal;
+}
+
+/* ── Landing: streak and weekly dots ─────────────────────────────────────── */
+
+.streak-section {
+    padding: 28px 32px 0 32px;
+    align-items: center;
+}
+
+.streak-label {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 13px;
+    -unity-text-align: middle-center;
+    margin-bottom: 12px;
+}
+
+.weekly-dots {
+    flex-direction: row;
+    justify-content: center;
+}
+
+.meditation-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: rgba(200, 169, 126, 0.18);
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.meditation-dot--filled {
+    background-color: #C8A97E;
+}
+
+/* ── Landing: Begin button ───────────────────────────────────────────────── */
+
+.btn-begin-meditation {
+    margin: 36px 24px 0 24px;
+    background-color: #C8A97E;
+    color: #0D0F1A;
+    border-radius: 12px;
+    font-size: 16px;
+    -unity-font-style: bold;
+    padding: 16px;
+    border-width: 0;
+}
+
+.btn-begin-meditation:hover {
+    background-color: rgba(200, 169, 126, 0.85);
+}
+
+/* ── Meditation screen: header ───────────────────────────────────────────── */
+
+.meditation-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(200, 169, 126, 0.10);
+}
+
+.btn-meditation-exit {
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 13px;
+}
+
+.meditation-vessel-title {
+    color: #C8A97E;
+    font-size: 15px;
+    -unity-font-style: bold;
+    flex-grow: 1;
+    -unity-text-align: middle-center;
+}
+
+.step-counter {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 12px;
+    min-width: 70px;
+    -unity-text-align: middle-right;
+}
+
+/* ── Smoke background placeholder ────────────────────────────────────────── */
+
+/* Phase 11 — replace with an Addressable texture via MeditationController */
+.smoke-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(200, 169, 126, 0.02);
+}
+
+/* ── Grid container and grid ─────────────────────────────────────────────── */
+
+.meditation-grid-container {
+    align-items: center;
+    padding: 18px 16px 8px 16px;
+}
+
+.meditation-grid {
+    flex-direction: column;
+    align-items: center;
+}
+
+.meditation-row {
+    flex-direction: row;
+}
+
+/* ── Grid cells ──────────────────────────────────────────────────────────── */
+
+.meditation-cell {
+    width: 72px;
+    height: 72px;
+    border-width: 1px;
+    border-color: rgba(200, 169, 126, 0.18);
+    border-radius: 8px;
+    margin: 3px;
+    background-color: rgba(255, 255, 255, 0.02);
+    align-items: center;
+    justify-content: center;
+}
+
+/* Pre-filled clue cells — set by MeditationSolver; stronger background applied inline */
+.meditation-cell--prefilled {
+    border-color: rgba(200, 169, 126, 0.35);
+}
+
+/* User-correctly-placed cells — lighter background applied inline */
+.meditation-cell--filled {
+    border-color: rgba(126, 203, 161, 0.30);
+}
+
+/* Empty interactive cells */
+.meditation-cell--empty {
+    cursor: link;
+}
+
+/* Wrong placement — AlertAmber border, no red */
+.meditation-cell--error {
+    border-color: #D4A853;
+    border-width: 2px;
+}
+
+.meditation-cell-label {
+    font-size: 24px;
+    -unity-text-align: middle-center;
+}
+
+/* ── Palette section ─────────────────────────────────────────────────────── */
+
+.palette-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 16px 4px 16px;
+}
+
+.shape-palette,
+.colour-palette {
+    flex-direction: row;
+    margin-bottom: 6px;
+}
+
+/* Shape symbol buttons */
+.palette-btn {
+    width: 58px;
+    height: 50px;
+    border-width: 1px;
+    border-color: rgba(200, 169, 126, 0.20);
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    margin: 4px;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.palette-btn--selected {
+    border-color: #C8A97E;
+    background-color: rgba(200, 169, 126, 0.14);
+    color: #C8A97E;
+}
+
+/* Colour swatch buttons — background-color set inline from ColourType */
+.colour-swatch {
+    width: 50px;
+    height: 34px;
+    border-radius: 6px;
+    margin: 4px;
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0);
+}
+
+.colour-swatch--selected {
+    border-color: #C8A97E;
+}
+
+/* ── Meditation quote ────────────────────────────────────────────────────── */
+
+.meditation-quote {
+    color: rgba(255, 255, 255, 0.30);
+    font-size: 12px;
+    -unity-font-style: italic;
+    -unity-text-align: middle-center;
+    padding: 8px 28px;
+    white-space: normal;
+}
+
+/* ── Completion overlay ──────────────────────────────────────────────────── */
+
+.completion-panel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(13, 15, 26, 0.92);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.completion-title {
+    color: #C8A97E;
+    font-size: 24px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    margin-bottom: 10px;
+}
+
+.completion-xp {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 14px;
+    -unity-text-align: middle-center;
+    margin-bottom: 28px;
+}
+
+.btn-completion-return {
+    background-color: #C8A97E;
+    color: #0D0F1A;
+    border-radius: 10px;
+    font-size: 15px;
+    -unity-font-style: bold;
+    padding: 14px 28px;
+    border-width: 0;
+}

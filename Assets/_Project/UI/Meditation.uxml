@@ -1,0 +1,84 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements"
+         xmlns:uie="UnityEditor.UIElements"
+         xsi="http://www.w3.org/2001/XMLSchema-instance"
+         engine="UnityEngine.UIElements"
+         noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+         editor-extension-mode="False">
+
+    <ui:Style src="Meditation.uss" />
+
+    <!--
+        Meditation.uxml — Phase 9 Daily Meditation (Curator's Sanctuary).
+        Two screens share a single UIDocument managed by MeditationController:
+          landing-screen    — Sanctuary entry with streak, dots, Begin button (default visible)
+          meditation-screen — Active 4×4 puzzle with shape/colour palette (default hidden)
+        Grid cells and palette buttons are built dynamically at runtime.
+    -->
+
+    <ui:VisualElement name="meditation-root" class="meditation-root">
+
+        <!-- ── Landing screen — Curator's Sanctuary ──────────────────────── -->
+        <ui:VisualElement name="landing-screen" class="landing-screen">
+
+            <ui:VisualElement class="sanctuary-header">
+                <ui:Label class="sanctuary-title"    text="Curator&#39;s Sanctuary" />
+                <ui:Label class="sanctuary-subtitle" text="Daily Meditation" />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="vessel-info-section">
+                <ui:Label name="vessel-name-landing" class="meditation-vessel-name" text="" />
+                <ui:Label class="meditation-description"
+                          text="Today&#39;s sequence: A rhythmic 4&#215;4 logic vessel designed to center the mind." />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="streak-section">
+                <ui:Label name="streak-label" class="streak-label" text="" />
+                <!-- Weekly dots populated by MeditationController at runtime -->
+                <ui:VisualElement name="weekly-dots" class="weekly-dots" />
+            </ui:VisualElement>
+
+            <ui:Button name="btn-begin" class="btn-begin-meditation" text="Begin Meditation" />
+
+        </ui:VisualElement>
+
+        <!-- ── Meditation screen — active 4×4 puzzle ─────────────────────── -->
+        <ui:VisualElement name="meditation-screen" class="meditation-screen hidden">
+
+            <!-- Header row: exit / vessel name / step counter -->
+            <ui:VisualElement class="meditation-header">
+                <ui:Button name="btn-exit"               class="btn-meditation-exit"    text="← Sanctuary" />
+                <ui:Label  name="meditation-vessel-title" class="meditation-vessel-title" text="" />
+                <ui:Label  name="step-counter"            class="step-counter"           text="" />
+            </ui:VisualElement>
+
+            <!-- Smoke background texture placeholder -->
+            <ui:VisualElement name="smoke-background" class="smoke-background" />
+
+            <!-- 4×4 puzzle grid — rows and cells added by MeditationController -->
+            <ui:VisualElement name="grid-container" class="meditation-grid-container">
+                <ui:VisualElement name="meditation-grid" class="meditation-grid" />
+            </ui:VisualElement>
+
+            <!-- Palettes — buttons added dynamically by MeditationController -->
+            <ui:VisualElement class="palette-section">
+                <ui:VisualElement name="shape-palette"  class="shape-palette" />
+                <ui:VisualElement name="colour-palette" class="colour-palette" />
+            </ui:VisualElement>
+
+            <!-- Italic quote at bottom of screen -->
+            <ui:Label class="meditation-quote"
+                      text="The pattern follows the breath. Inhale on placement, exhale on revelation." />
+
+            <!-- Completion overlay — shown after all cells are correctly filled -->
+            <ui:VisualElement name="completion-panel" class="completion-panel hidden">
+                <ui:Label class="completion-title" text="Clarity achieved." />
+                <ui:Label name="completion-xp"     class="completion-xp"    text="" />
+                <ui:Button name="btn-completion-return" class="btn-completion-return"
+                           text="Return to Gallery" />
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+
+</ui:UXML>
